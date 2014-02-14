@@ -4,5 +4,33 @@
 <div class="container" style="margin-top:50px">
     <div id="paint-zone" class="col-md-12" >
     </div>
+    <svg id="filter">
+	<defs>
+	    <filter id="dropshadow" x="0" y="0" width="200%" height="200%">
+	    <feOffset result="offOut" in="SourceAlpha" dx="0" dy="0" />
+	    <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+	    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+	    </filter>
+	</defs>
+	<defs>
+	    <filter id="inner-glow">
+		<feGaussianBlur in="SourceGraphic" stdDeviation="3"></feGaussianBlur>
+	    </filter>
+	</defs>
+	<defs>
+	    <filter id="ball-glow">
+		<feGaussianBlur in="SourceGraphic" stdDeviation="1"></feGaussianBlur>
+	    </filter>
+	</defs>
+	<defs>
+	<filter id="glow">
+	<feGaussianBlur stdDeviation="12.5" result="coloredBlur"/>
+	<feMerge>
+	<feMergeNode in="coloredBlur"/>
+	<feMergeNode in="SourceGraphic"/>
+	</feMerge>
+	</filter>
+	</defs>
+    </svg>
 </div>
 {% endblock %}
